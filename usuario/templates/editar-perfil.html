@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block base %}
+{% load static %}
+
+<script>
+
+window.onload = function(){
+  document.getElementById('li_home').className = "navigation__active";
+}
+
+</script>
+
+<div class="content__inner">
+  <header class="content__title">
+    <h1>
+      Editar Perfil
+    </h1>
+  </header>
+</div>
+
+<div class="card">
+  <div class="card-body">
+
+    <form method="post" id="form" name="form">
+      {% csrf_token %}
+
+      {% for field in form %}
+
+      <div class="form-group form-group--float">
+        <input id="{{field.id_for_label}}" type="text" class="form-control" value="{{field.value|default_if_none:''}}" name="{{field.name}}">
+        <label>{{field.label}}</label>
+        <i class="form-group__bar"></i>
+      </div>
+
+      {% endfor %}
+
+      <button type="submit" class="btn btn-primary" aria-pressed="false" autocomplete="off">
+        Confirmar
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

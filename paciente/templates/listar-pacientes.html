@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block base %}
+
+<script>
+
+window.onload = function(){
+  document.getElementById('li_paciente').className = "navigation__sub navigation__sub--active navigation__sub--toggled";
+  document.getElementById('li_listar_paciente').className = "navigation__active";
+}
+
+</script>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Pacientes</h4>
+
+        <table class="table mb-0">
+            <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Historico</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for paciente in pacientes %}
+            <tr>
+                <td>{{paciente.cpf}}</td>
+                <td><a class="nav-link active" href="{% url 'perfil_paciente' paciente.cpf %}">{{paciente.nome}}</a></td>
+                <td>{{paciente.historico}}</td>
+                {% if permissao_atualizar %}
+                <td><a class="nav-link active" href="{% url 'atualizar_paciente' paciente.cpf %}">Atualizar</a></td>
+                {% endif %}
+                {% if permissao_deletar %}
+                <td><a class="nav-link active" href="{% url 'deletar_paciente' paciente.cpf %}">Deletar</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base-deletar.html" %}
+{% block base_deletar %}
+
+</head>
+<body data-ma-theme="blue" onload="deletar('{{paciente.nome}}')">
+
+<form method="post" action="javascript:void(0)" name="form" id="form">
+  {% csrf_token %}
+</form>
+
+<a href="#" id="a"></a>
+
+<script>
+
+function deletar(nome){
+  swal({
+      title: 'Tem Certeza?',
+      text: "Deseja deletar esse Paciente?",
+      type: 'warning',
+      buttonsStyling: false,
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn btn-secondary'
+      }).then((result) => {
+      if (result.value) {
+        swal({
+          title: 'Sucesso',
+          text: 'Paciente ' + nome + ' deletado(a)!',
+          type: 'success',
+          buttonsStyling: false,
+          confirmButtonClass: 'btn btn-primary',
+        }).then(function(){
+            document.form.action = "";
+            document.form.submit();
+        });
+      }
+      else{
+        window.location.href = "{% url 'listar_pacientes' %}";
+      }
+    })
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<li id="li_clinica" class="navigation__sub">
+  <a href="#"><i class="zmdi zmdi-view-week"></i> Clínica</a>
+
+  <ul>
+      {% if permissao_clinica %}
+      <li id="li_nova_clinica"><a href={% url "nova_clinica" %}>Nova</a></li>
+      {% endif %}
+
+      <li id="li_listar_clinica"><a href={% url "listar_clinicas" %}>Listar</a></li>
+  </ul>
+
+</li>
+
+<li id="li_paciente" class="navigation__sub">
+  <a href="#"><i class="zmdi zmdi-view-week"></i> Paciente</a>
+
+  <ul>
+      {% if permissao_paciente %}
+      <li id="li_novo_paciente"><a href={% url "novo_paciente" %}>Novo</a></li>
+      {% endif %}
+
+      <li id="li_listar_paciente"><a href={% url "listar_pacientes" %}>Listar</a></li>
+  </ul>
+
+</li>
+
+<li id="li_profissional" class="navigation__sub">
+  <a href="#"><i class="zmdi zmdi-view-week"></i> Profissional</a>
+
+  <ul>
+      {% if permissao_profissional %}
+      <li id="li_novo_profissional"><a href={% url "novo_profissional" %}>Novo</a></li>
+      {% endif %}
+
+      <li id="li_listar_profissional"><a href={% url "listar_profissionais" %}>Listar</a></li>
+  </ul>
+
+</li>

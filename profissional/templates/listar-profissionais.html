@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block base %}
+
+<script>
+
+window.onload = function(){
+  document.getElementById('li_profissional').className = "navigation__sub navigation__sub--active navigation__sub--toggled";
+  document.getElementById('li_listar_profissional').className = "navigation__active";
+}
+
+</script>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Profissionais</h4>
+
+        <table class="table mb-0">
+            <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Contato</th>
+                <th>Especialidade</th>
+                <th>Clínica</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for profissional in profissionais %}
+            <tr>
+                <td>{{profissional.cpf}}</td>
+                <td>{{profissional.nome}}</td>
+                <td>{{profissional.contato}}</td>
+                <td>{{profissional.especialidade}}</td>
+                <td>{{profissional.cnpj_clinica}}</td>
+                {% if permissao_atualizar %}
+                <td><a class="nav-link active" href="{% url 'atualizar_profissional' profissional.cpf %}">Atualizar</a></td>
+                {% endif %}
+                {% if permissao_deletar %}
+                <td><a class="nav-link active" href="{% url 'deletar_profissional' profissional.cpf %}">Deletar</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

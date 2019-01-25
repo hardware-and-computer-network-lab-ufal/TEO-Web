@@ -1,0 +1,40 @@
+{% extends "base-login.html" %}
+{% block base_login %}
+
+<div class="login__block active" id="l-login">
+  <div class="login__block__header">
+      <i class="zmdi zmdi-account-circle"></i>
+      Tela de Cadastro
+
+      <div class="actions actions--inverse login__block__actions">
+          <div class="dropdown">
+              <i data-toggle="dropdown" class="zmdi zmdi-more-vert actions__item"></i>
+
+              <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="{% url 'login' %}">Fazer Login</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="login__block__body">
+        {% for field in form %}
+        <div class="form-group form-group--float form-group--centered">
+            {% if field.name == "password1" or field.name == "password2" %}
+            <input type="password" class="form-control" id="{{field.id_for_label}}" value="{{field.value|default_if_none:''}}" name="{{field.name}}">
+            {% else %}
+            <input type="text" class="form-control" id="{{field.id_for_label}}" value="{{field.value|default_if_none:''}}" name="{{field.name}}">
+            {% endif %}
+            <label>{{field.label}}</label>
+            <i class="form-group__bar"></i>
+        </div>
+        {% endfor %}
+
+        <button href="index.html" class="btn btn--icon login__block__btn"><i class="zmdi zmdi-long-arrow-right"></i></button>
+    </div>
+</form>
+</div>
+
+{% endblock %}

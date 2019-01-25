@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block base %}
+
+<script>
+
+window.onload = function(){
+  document.getElementById('li_clinica').className = "navigation__sub navigation__sub--active navigation__sub--toggled";
+  document.getElementById('li_listar_clinica').className = "navigation__active";
+}
+
+</script>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Clínicas</h4>
+
+        <table class="table mb-0">
+            <thead>
+            <tr>
+                <th>CNPJ</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Contato</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for clinica in clinicas %}
+            <tr>
+                <td>{{clinica.cnpj}}</td>
+                <td>{{clinica.nome}}</td>
+                <td>{{clinica.endereco}}</td>
+                <td>{{clinica.contato}}</td>
+                {% if permissao_atualizar %}
+                <td><a class="nav-link active" href="{% url 'atualizar_clinica' clinica.cnpj %}">Atualizar</a></td>
+                {% endif %}
+                {% if permissao_deletar %}
+                <td><a class="nav-link active" href="{% url 'deletar_clinica' clinica.cnpj %}">Deletar</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
