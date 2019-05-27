@@ -1,0 +1,8 @@
+teoweb/__pycache__/
+brain/__pycache__/
+brain/migrations/__pycache__/
+accounts/__pycache__/
+accounts/migrations/__pycache__/
+accounts/__pycache__/
+accounts/migrations/__pycache__/
+.vscode/
