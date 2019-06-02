@@ -48,8 +48,8 @@ window.onload = function(){
           </div>
         </div>
         {% else %}
-        <input id="{{field.id_for_label}}" type="text" class="form-control" value="{{field.value|default_if_none:''}}" name="{{field.name}}">
-        <label>{{field.label}}</label>
+        <input style="color: #fff" id="{{field.id_for_label}}" type="text" class="form-control" value="{{field.value|default_if_none:''}}" name="{{field.name}}">
+        <label style="color: rgb(20, 243, 243)">{{field.label}}</label>
         <i class="form-group__bar"></i>
         {% endif %}
       </div>

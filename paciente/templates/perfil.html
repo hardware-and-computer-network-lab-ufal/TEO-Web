@@ -55,61 +55,25 @@ window.onload = function(){
     </div>
 
     <div id="perfil-prontuario">
-    <div class="widget-profile__list">
-        <div class="media">
-            <div class="avatar-char"><i class="zmdi zmdi-assignment"></i></div>
-            <div class="media-body">
-                <strong>Histórico</strong>
-                <small>{{paciente.historico}}</small>
-            </div>
-        </div>
-    </div>
-
-    <div class="listview listview--inverse listview--striped">
-        <div class="listview__item">
-            <div class="widget-past-days__info">
-                <small>Uso do app</small>
-                <h3>13</h3>
-            </div>
-
-            <div class="widget-past-days__chart hidden-sm">
-                <div class="sparkline-bar-stats">1,1,3,5,0,0,2,1</div>
+        <div class="widget-profile__list">
+            <div class="media">
+                <div class="avatar-char"><i class="zmdi zmdi-assignment"></i></div>
+                <div class="media-body">
+                    <strong>Histórico</strong>
+                    <small>{{paciente.historico}}</small>
+                </div>
             </div>
         </div>
 
-        <div class="listview__item">
-            <div class="widget-past-days__info">
-                <small>Vitórias</small>
-                <h3>24,456,799</h3>
+        <div class="listview listview--inverse listview--striped">
+            <div class="listview__item">
+                <div class="widget-past-days__info">
+                    <small>CPF</small>
+                    <h3>{{paciente.cpf}}</h3>
+                </div>
             </div>
 
-            <div class="widget-past-days__chart hidden-sm">
-                <div class="sparkline-bar-stats">5,7,2,5,2,8,6,7,6,5,3,1,9,3,5,8,2,4</div>
-            </div>
         </div>
-
-        <div class="listview__item">
-            <div class="widget-past-days__info">
-                <small>Derrotas</small>
-                <h3>13,965</h3>
-            </div>
-
-            <div class="widget-past-days__chart hidden-sm">
-                <div class="sparkline-bar-stats">5,7,2,5,2,8,6,7,6,5,3,1,9,3,5,8,2,4</div>
-            </div>
-        </div>
-
-        <div class="listview__item">
-            <div class="widget-past-days__info">
-                <small>Total Returns</small>
-                <h3>198</h3>
-            </div>
-
-            <div class="widget-past-days__chart hidden-sm">
-                <div class="sparkline-bar-stats">3,9,1,3,5,6,7,6,8,2,5,2,7,5,6,7,6,8</div>
-            </div>
-        </div>
-    </div>
     </div>
 </div>
 
@@ -132,50 +96,39 @@ window.onload = function(){
                                                         "<div class='listview listview--inverse listview--striped'>"+
                                                             "<div class='listview__item'>"+
                                                                 "<div class='widget-past-days__info'>"+
-                                                                    "<small>Uso do app</small>"+
-                                                                    "<h3>13</h3>"+
+                                                                    "<small>CPF</small>"+
+                                                                    "<h3>{{paciente.cpf}}</h3>"+
                                                                 "</div>"+
-                                                                "<div class='widget-past-days__chart hidden-sm'>"+
-                                                                    "<div class='sparkline-bar-stats'>1,1,3,5,0,0,2,1</div>"+
-                                                                    "</div>"+
-                                                                "</div>"+
-                                                                "<div class='listview__item'>"+
-                                                                    "<div class='widget-past-days__info'>"+
-                                                                        "<small>Vitórias</small>"+
-                                                                        "<h3>24,456,799</h3>"+
-                                                                    "</div>"+
-                                                                    "<div class='widget-past-days__chart hidden-sm'>"+
-                                                                        "<div class='sparkline-bar-stats'>5,7,2,5,2,8,6,7,6,5,3,1,9,3,5,8,2,4</div>"+
-                                                                    "</div>"+
-                                                                "</div>"+
-                                                                "<div class='listview__item'>"+
-                                                                    "<div class='widget-past-days__info'>"+
-                                                                        "<small>Derrotas</small>"+
-                                                                        "<h3>13,965</h3>"+
-                                                                    "</div>"+
-                                                                    "<div class='widget-past-days__chart hidden-sm'>"+
-                                                                        "<div class='sparkline-bar-stats'>5,7,2,5,2,8,6,7,6,5,3,1,9,3,5,8,2,4</div>"+
-                                                                    "</div>"+
-                                                                "</div>"+
-                                                                "<div class='listview__item'>"+
-                                                                    "<div class='widget-past-days__info'>"+
-                                                                        "<small>Total Returns</small>"+
-                                                                        "<h3>198</h3>"+
-                                                                    "</div>"+
-                                                                    "<div class='widget-past-days__chart hidden-sm'>"+
-                                                                        "<div class='sparkline-bar-stats'>3,9,1,3,5,6,7,6,8,2,5,2,7,5,6,7,6,8</div>"+
-                                                                    "</div>"+
-                                                                "</div>"+
-                                                            "</div>";
+                                                            "</div>"+
+                                                        "</div>";
         }
 
         else{
-            document.getElementById('perfil-prontuario').innerHTML = "<div class='widget-profile__list'>"+
-                                                                        "<div class='media'>"+
+            document.getElementById('perfil-prontuario').innerHTML ="<div class='widget-profile__list'>" +
+                                                                        "<div class='media'>" +
                                                                             "<div class='avatar-char'><i class='zmdi zmdi-assignment'></i></div>"+
                                                                             "<div class='media-body'>"+
-                                                                                "<strong>Histórico</strong>"+
-                                                                                "<small>{{paciente.historico}}</small>"+
+                                                                                "<strong>Dados do aplicativo</strong>"+
+                                                                            "</div>"+
+                                                                        "</div>"+
+                                                                    "</div>"+ 
+                                                                    "<div class='listview listview--inverse listview--striped'>"+
+                                                                        "<div class='listview__item'>"+
+                                                                            "<div class='widget-past-days__info'>"+
+                                                                                "<small>Jogos Utilizados</small>"+
+                                                                                "<h3>3</h3>"+
+                                                                            "</div>"+
+                                                                        "</div>"+
+                                                                        "<div class='listview__item'>"+
+                                                                            "<div class='widget-past-days__info'>"+
+                                                                                "<small>Vitórias</small>"+
+                                                                                "<h3>5</h3>"+
+                                                                            "</div>"+
+                                                                        "</div>"+
+                                                                        "<div class='listview__item'>"+
+                                                                            "<div class='widget-past-days__info'>"+
+                                                                                "<small>Derrotas</small>"+
+                                                                                "<h3>3</h3>"+
                                                                             "</div>"+
                                                                         "</div>"+
                                                                     "</div>";
