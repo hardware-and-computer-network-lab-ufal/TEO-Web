@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'clinica',
     'paciente',
     'profissional',
-    'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
 ]
