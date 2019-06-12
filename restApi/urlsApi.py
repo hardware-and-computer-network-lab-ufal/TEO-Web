@@ -3,11 +3,12 @@ from rest_framework import routers
 from restApi import views
 from rest_framework.authtoken import views as viewsToken
 
-router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 router.register(r'api', views.PacienteViewSet)
-
+# router.register(r'api-send', views.jogo_detail())
 
 urlApiPattern = [
-	path('', include(router.urls)),
-	path('api-token-auth/', viewsToken.obtain_auth_token, name='api-token-auth')
+	path('api-token/', viewsToken.obtain_auth_token, name='api-token-auth'),
+	path('api-send/', views.jogo_detail)
 ]
+urlApiPattern += router.urls

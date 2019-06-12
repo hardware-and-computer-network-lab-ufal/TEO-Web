@@ -7,7 +7,7 @@ from rest_framework import serializers
 # 		model = User
 # 		fields = ('url', 'username', 'email')
 
-class PacienteSerializer(serializers.HyperlinkedModelSerializer):
+class PacienteSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Paciente
 		fields = ('cpf', 'nome')
