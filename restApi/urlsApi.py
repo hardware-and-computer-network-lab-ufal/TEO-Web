@@ -9,6 +9,6 @@ router.register(r'api', views.PacienteViewSet)
 
 urlApiPattern = [
 	path('api-token/', viewsToken.obtain_auth_token, name='api-token-auth'),
-	path('api-send/', views.jogo_detail)
+	path('api-jogos/', views.paciente_joga)
 ]
 urlApiPattern += router.urls
