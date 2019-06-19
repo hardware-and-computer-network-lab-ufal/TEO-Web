@@ -10,9 +10,9 @@ class Paciente(models.Model):
 		return self.nome
 
 class PacienteJoga(models.Model):
-	class Meta:
-		unique_together = ('nome', 'cpf')
-
-	nome = models.ForeignKey(Jogos, on_delete=models.CASCADE)
 	cpf = models.ForeignKey(Paciente, on_delete=models.CASCADE, default="Null")
-	tempoDeJogo = models.PositiveIntegerField()
+	nomeJogo = models.ForeignKey(Jogos, on_delete=models.CASCADE)
+	tempoJogo = models.PositiveIntegerField()
+	quantidadeAcertos = models.PositiveIntegerField()
+	quantidadeErros = models.PositiveIntegerField()
+	horario = models.DateTimeField(auto_now_add=True)

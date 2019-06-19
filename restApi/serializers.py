@@ -17,5 +17,11 @@ class PacienteSerializer(serializers.ModelSerializer):
 class PacienteJogaSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = PacienteJoga
-		fields = ('id', 'tempoDeJogo', 'cpf', 'nome')
+		fields = ('id', 'cpf', 'nomeJogo', 'tempoJogo', 'quantidadeAcertos', 'quantidadeErros', 'horario')
+
+class JogosEstatisticasSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = PacienteJoga
+		fields = ('cpf', 'nomeJogo', 'tempoTotalJogo', 'quantidadeTotalAcertos', 'quantidadeTotalErros')
+
 
