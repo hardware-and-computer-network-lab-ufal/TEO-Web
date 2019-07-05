@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import urls
 from teoweb import views
+from restApi import urlsApi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,3 +27,5 @@ urlpatterns = [
     path('paciente/', include('paciente.urls')),
     path('profissional/', include('profissional.urls')),
 ]
+
+urlpatterns += urlsApi.urlApiPattern
