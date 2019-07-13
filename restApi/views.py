@@ -9,9 +9,16 @@ from paciente.models import PacienteJoga, Paciente
 import json
 
 # Retorna todos os pacientes
-class PacienteViewSet(viewsets.ModelViewSet):
-	queryset = Paciente.objects.all()
-	serializer_class = PacienteSerializer
+class PacienteTodos():
+
+	@api_view(['GET'])
+	def exibir(request):
+		query = Paciente.objects.all()
+		serializer = PacienteSerializer(query, many=True)
+
+		saida = {}
+		saida["lista"] = serializer.data
+		return Response(saida)
 
 @api_view(['GET', 'POST'])
 def paciente_joga(request):
@@ -21,7 +28,10 @@ def paciente_joga(request):
 				return Response(status=status.HTTP_400_BAD_REQUEST)
 		pessoaJoga = PacienteJoga.objects.raw('SELECT id,cpf_id,nomeJogo_id,tempojogo,quantidadeAcertos,quantidadeErros FROM paciente_pacientejoga WHERE cpf_id = ' + request.GET.get('cpf', ''))
 		serializer = PacienteJogaSerializer(pessoaJoga, many=True)
-		return Response(serializer.data)
+
+		saida = {}
+		saida["lista"] = serializer.data
+		return Response(saida)
 
 	elif request.method == 'POST':
 		serializer = PacienteJogaSerializer(data=request.data)
@@ -64,8 +74,11 @@ def jogos_estatisticas(request):
 		row['quantidadeTotalAcertos'] = userJogo[x][3]
 		row['quantidadeTotalErros'] = userJogo[x][4]
 		data.append(row)
+
+	saida = {}
+	saida["lista"] = data
 		
-	return Response(data)
+	return Response(saida)
 
 
 
